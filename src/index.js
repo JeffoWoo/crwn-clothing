@@ -1,6 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { render } from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 import App from './App';
 import { UserProvider } from './contexts/user.context';
@@ -9,18 +9,19 @@ import { CartProvider } from './contexts/cart.context';
 
 import './index.scss';
 
-ReactDOM.render(
+const rootElement = document.getElementById('root');
+
+render(
   <React.StrictMode>
-    <Router>      
+    <BrowserRouter>
       <UserProvider>
         <ProductsProvider>
           <CartProvider>
             <App />
-          </CartProvider>          
+          </CartProvider>
         </ProductsProvider>
-      </UserProvider>          
-    </Router>    
+      </UserProvider>
+    </BrowserRouter>
   </React.StrictMode>,
-  document.getElementById('root')
+  rootElement
 );
-
